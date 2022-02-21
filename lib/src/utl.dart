@@ -1,20 +1,40 @@
+import 'dart:io';
 import 'dart:math';
 
 import 'package:flutter/foundation.dart';
 
+/// Platforms
+enum kPlatform {
+  ///
+  android,
+
+  ///
+  fuchsia,
+
+  ///
+  ios,
+
+  ///
+  linux,
+
+  ///
+  macos,
+
+  ///
+  windows,
+}
+
 /// My utilities
 class Utl {
-
   /// Get a random int value
   static int randomInt({int min = 0, int max = 99}) {
     return min + Random().nextInt(max - min);
   }
 
   /// Get a random bool value
-  static
-  bool randomBool(){
+  static bool randomBool() {
     final int val = randomInt();
-    if( val % 2 == 0) {
+    if (val % 2 == 0) {
       return true;
     }
     return false;
@@ -58,13 +78,54 @@ class Utl {
   }
 
   /// Convert integer to hex string
-  static
-  String hexString( int v){
-    return v.toRadixString(16);
+  static String hexString(int val) {
+    const int padding = 2;
+
+    int iVal = val;
+    if (val < 0) {
+      iVal = val.abs();
+    }
+
+    final String sVal = iVal.toRadixString(16).toUpperCase().padLeft(padding, '0');
+    if (val < 0) {
+      return '-0x$sVal';
+    }
+    return '0x$sVal';
   }
 
-}
+  /// Check what is the current platform
+  static bool isPlatform(kPlatform platform) {
+    switch (platform) {
+      case kPlatform.android:
+        return Platform.isAndroid;
+      case kPlatform.fuchsia:
+        return Platform.isFuchsia;
+      case kPlatform.ios:
+        return Platform.isIOS;
+      case kPlatform.linux:
+        return Platform.isLinux;
+      case kPlatform.macos:
+        return Platform.isMacOS;
+      case kPlatform.windows:
+        return Platform.isWindows;
+    }
+  }
 
+  /// Get operating system name
+  static String getOperatingSystem() {
+    return Platform.operatingSystem;
+  }
+
+  /// Get operating system version
+  static String getOperatingSystemVersion() {
+    return Platform.operatingSystemVersion;
+  }
+
+  /// Get the number of processors
+  static int getNumOfProcessors() {
+    return Platform.numberOfProcessors;
+  }
+}
 
 /// Titled
 mixin Titled {
@@ -72,7 +133,7 @@ mixin Titled {
   String _title = 'empty';
 
   /// set title
-  set title (String s) {
+  set title(String s) {
     _title = s;
   }
 
