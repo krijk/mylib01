@@ -41,7 +41,7 @@ class UI {
 
   /// Create text area
   static
-  Widget textArea(String text, double width, double height){
+  Widget textArea(String text, double? width, double? height){
 
     UI.text = text;
 
