@@ -1,5 +1,9 @@
 /// Library constants
 class Const {
+  /// utility text short length
+  static String myTextShort =
+      'Lorem ipsum dolor sit amet';
+
   /// utility text mid length
   static String myTextMid =
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
