@@ -1,4 +1,5 @@
 export './src/const.dart';
+export './src/ex_numbers.dart';
 export './src/ex_string.dart';
 export './src/log.dart';
 export './src/my_state03.dart';
