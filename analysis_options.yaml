@@ -61,7 +61,6 @@ linter:
     eol_at_end_of_file: true
     file_names: true
     hash_and_equals: true
-#    invariant_booleans: true # deprecated
     iterable_contains_unrelated_type: true
     join_return_with_assignment: true
     leading_newlines_in_multiline_strings: true
@@ -149,6 +148,7 @@ linter:
     # empty_statements: true
     # exhaustive_cases: true
     # implementation_imports: true
+    #    invariant_booleans: true # deprecated
     # library_names: true
     # library_prefixes: true
     # null_closures: true
