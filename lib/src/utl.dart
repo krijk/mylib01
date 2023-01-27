@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:flutter/foundation.dart';
 
 /// Platforms
+// ignore: camel_case_types
 enum kPlatform {
   ///
   android,
@@ -45,13 +46,13 @@ class Utl {
     String nameClass = 'unknown';
     String nameMethod = 'unknown';
 
-    final int _level = level ?? 0;
+    final int level1 = level ?? 0;
 
     StackTrace? st = stackTrace;
-    int idxFrame = _level;
+    int idxFrame = level1;
     if (st == null) {
       st = StackTrace.current;
-      idxFrame = 1 + _level;
+      idxFrame = 1 + level1;
     }
     final List<StackFrame> currentFrames = StackFrame.fromStackTrace(st);
 

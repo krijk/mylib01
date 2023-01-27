@@ -14,18 +14,21 @@ class RestartWidget extends StatefulWidget {
   static void restartApp(BuildContext context) {
 
     final State<RestartWidget>? state = context.findRootAncestorStateOfType<State<RestartWidget>>();
-    if (state is _RestartWidgetState) {
+    if (state is RestartWidgetState) {
       state.restartApp();
     }
   }
 
   @override
-  _RestartWidgetState createState() => _RestartWidgetState();
+  RestartWidgetState createState() => RestartWidgetState();
 }
 
-class _RestartWidgetState extends State<RestartWidget> {
+///
+class RestartWidgetState extends State<RestartWidget> {
+  ///
   Key key = UniqueKey();
 
+  /// Restart application
   void restartApp() {
     setState(() {
       key = UniqueKey();
