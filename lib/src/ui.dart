@@ -5,46 +5,39 @@ import 'package:flutter/material.dart';
 class UI {
   /// Text on the scroll view
   static String text = '';
+
   /// Text area scroll controller
   static final ScrollController _textAreaController = ScrollController();
 
   /// Get the screen size
-  static
-  Size screenSize( BuildContext context){
-    final Size size = MediaQuery
-        .of(context)
-        .size;
+  static Size screenSize(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
     return size;
   }
 
   /// Get the screen width
-  static
-  double screenWidth( BuildContext context){
+  static double screenWidth(BuildContext context) {
     return screenSize(context).width;
   }
 
   /// Get the screen height
-  static
-  double screenHeight( BuildContext context){
+  static double screenHeight(BuildContext context) {
     return screenSize(context).height;
   }
 
   /// Check if the device is in landscape mode
   /// checked by the screen size
-  static
-  bool isLandscapeScreen(BuildContext ctx){
-    final double w = screenWidth( ctx);
+  static bool isLandscapeScreen(BuildContext ctx) {
+    final double w = screenWidth(ctx);
     final double h = screenHeight(ctx);
-    if( w > h){
+    if (w > h) {
       return true;
     }
     return false;
   }
 
   /// Create text area
-  static
-  Widget textArea(String text, double? width, double? height){
-
+  static Widget textArea(String text, double? width, double? height) {
     UI.text = text;
 
     return Container(
@@ -88,17 +81,19 @@ class UI {
 
   /// Scroll the text area to the bottom
   static void textAreaScrollDown() {
-    _textAreaController.jumpTo(_textAreaController.position.maxScrollExtent);
+    final ScrollController controller = _textAreaController;
+    if (controller.hasClients) {
+      controller.jumpTo(controller.position.maxScrollExtent);
+    }
   }
 
   /// Get random color
-  static
-  Color getRandomColor(){
+  static Color getRandomColor() {
     return Color((Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0);
   }
 
   /// Get current theme data
-  static ThemeData getCurrentThemeData(BuildContext context){
+  static ThemeData getCurrentThemeData(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     return theme;
   }
