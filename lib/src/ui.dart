@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 class UI {
   /// Text on the scroll view
   static String text = '';
+  /// Text area scroll controller
+  static final ScrollController _textAreaController = ScrollController();
 
   /// Get the screen size
   static
@@ -68,6 +70,7 @@ class UI {
         child: SingleChildScrollView(
           // for Vertical scrolling
           // scrollDirection: Axis.vertical,
+          controller: _textAreaController,
           child: Text(
             UI.text,
             style: const TextStyle(
@@ -81,6 +84,11 @@ class UI {
         ),
       ),
     );
+  }
+
+  /// Scroll the text area to the bottom
+  static void textAreaScrollDown() {
+    _textAreaController.jumpTo(_textAreaController.position.maxScrollExtent);
   }
 
   /// Get random color
