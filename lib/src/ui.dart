@@ -37,8 +37,17 @@ class UI {
   }
 
   /// Create text area
-  static Widget textArea(String text, double? width, double? height) {
+  static Widget textArea(String text, double? width, double? height, {TextStyle? style}) {
+
     UI.text = text;
+
+    style ??= const TextStyle(
+        // color: Colors.black,
+        fontWeight: FontWeight.normal,
+        fontSize: 14.0,
+        letterSpacing: 0,
+        wordSpacing: 0,
+      );
 
     return Container(
       width: width,
@@ -66,13 +75,7 @@ class UI {
           controller: _textAreaController,
           child: Text(
             UI.text,
-            style: const TextStyle(
-              // color: Colors.black,
-              fontWeight: FontWeight.normal,
-              fontSize: 14.0,
-              letterSpacing: 0,
-              wordSpacing: 0,
-            ),
+            style: style,
           ),
         ),
       ),
