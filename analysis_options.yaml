@@ -61,10 +61,8 @@ linter:
     eol_at_end_of_file: true
     file_names: true
     hash_and_equals: true
-    iterable_contains_unrelated_type: true
     join_return_with_assignment: true
     leading_newlines_in_multiline_strings: true
-    list_remove_unrelated_type: true
     missing_whitespace_between_adjacent_strings: true
     no_adjacent_strings_in_list: true
     no_duplicate_case_values: true
@@ -182,6 +180,8 @@ linter:
     # unnecessary_this: true
     # use_function_type_syntax_for_parameters: true
     # use_rethrow_when_possible: true
+#    iterable_contains_unrelated_type: true  # deprecated
+#    list_remove_unrelated_type: true  # deprecated
 
 
 # Additional information about this file can be found at
