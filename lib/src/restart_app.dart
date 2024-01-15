@@ -1,6 +1,8 @@
+library;
+import 'package:flutter/material.dart';
+
 /// Flutter: how to force an application restart (in production mode)?
 /// https://stackoverflow.com/questions/50115311/flutter-how-to-force-an-application-restart-in-production-mode
-import 'package:flutter/material.dart';
 
 /// Restart widget
 class RestartWidget extends StatefulWidget {
