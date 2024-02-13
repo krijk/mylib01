@@ -62,6 +62,7 @@ class Pref  {
   Future<void> setString(String key, String val) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString(key, val);
+    // await prefs.setString(key, val); // Need to be checked
   }
 
   /// Get preference json map
