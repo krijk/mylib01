@@ -69,6 +69,7 @@ class UI {
       child: Scrollbar(
         // SingleChildScrollView contains a
         // single child which is scrollable
+        controller: _textAreaController,
         child: SingleChildScrollView(
           // for Vertical scrolling
           // scrollDirection: Axis.vertical,
