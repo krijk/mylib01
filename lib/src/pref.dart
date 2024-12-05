@@ -51,9 +51,9 @@ class Pref  {
 
   /// Get preference string
   static
-  Future<String> getString(String key) async {
+  Future<String> getString(String key, String defaultString) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    final String v = prefs.getString(key) ?? '';
+    final String v = prefs.getString(key) ?? defaultString;
     return v;
   }
 
