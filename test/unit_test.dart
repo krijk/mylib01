@@ -1,7 +1,10 @@
 import 'dart:math' as math;
+import 'dart:ui';
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:mylib01/lib.dart';
+import 'package:mylib01/src/ex_color.dart';
 
 void main() {
   test('round int at the place', () {
@@ -28,4 +31,21 @@ void main() {
     final String str1 = 'test'.capitalize();
     expect(str1, 'Test');
   });
+
+  test('Color extensions', () {
+    final Color colBase = Colors.grey;
+
+    /// From Color object to String
+    final String strColBaseHex = colBase.toHex(withAlpha: true);
+    expect(strColBaseHex, 'FF9E9E9E');
+
+    /// From string code to Color
+    final Color colFromString = Color(int.parse(strColBaseHex, radix: 16));
+    expect(colFromString.a, colBase.a);
+    expect(colFromString.r, colBase.r);
+    expect(colFromString.g, colBase.g);
+    expect(colFromString.b, colBase.b);
+
+  });
+
 }
