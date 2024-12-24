@@ -57,9 +57,9 @@ class Pref {
   }
 
   /// Reads a set of string values from persistent storage.
-  static Future<List<String?>> getStringList(String key, List<String>? defaultStrings) async {
+  static Future<List<String>> getStringList(String key, List<String>? defaultStrings) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    final List<String?> stringList = prefs.getStringList(key) ?? defaultStrings ?? <String>[];
+    final List<String> stringList = prefs.getStringList(key) ?? defaultStrings ?? <String>[];
     return stringList;
   }
 
