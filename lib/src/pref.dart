@@ -56,6 +56,22 @@ class Pref {
     // await prefs.setString(key, val); // Need to be checked
   }
 
+  /// Reads a set of string values from persistent storage.
+  static Future<List<String?>> getStringList(String key, List<String>? defaultStrings) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final List<String?> stringList = prefs.getStringList(key) ?? defaultStrings ?? <String>[];
+    return stringList;
+  }
+
+  /// Saves a list of strings value to persistent storage in the background.
+  static Future<void> setStringList(String key, List<String>? defaultStrings) async {
+    if (defaultStrings == null) {
+      return;
+    }
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setStringList(key, defaultStrings);
+  }
+
   /// Get preference json map
   static Future<Map<String, dynamic>> getJson(String key) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
