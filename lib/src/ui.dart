@@ -38,16 +38,15 @@ class UI {
 
   /// Create text area
   static Widget textArea(String text, double? width, double? height, {TextStyle? style}) {
-
     UI.text = text;
 
     style ??= const TextStyle(
-        // color: Colors.black,
-        fontWeight: FontWeight.normal,
-        fontSize: 14.0,
-        letterSpacing: 0,
-        wordSpacing: 0,
-      );
+      // color: Colors.black,
+      fontWeight: FontWeight.normal,
+      fontSize: 14.0,
+      letterSpacing: 0,
+      wordSpacing: 0,
+    );
 
     return Container(
       width: width,
@@ -60,7 +59,7 @@ class UI {
       decoration: BoxDecoration(
         // adding borders around the widget
         border: Border.all(
-          color: Colors.grey.withOpacity(0.2),
+          color: Colors.grey.withValues(alpha: 0.2),
           width: 2.0,
         ),
       ),
@@ -93,7 +92,7 @@ class UI {
 
   /// Get random color
   static Color getRandomColor() {
-    return Color((Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0);
+    return Color((Random().nextDouble() * 0xFFFFFF).toInt()).withValues(alpha: 1.0);
   }
 
   /// Get current theme data

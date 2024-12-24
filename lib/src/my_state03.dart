@@ -8,7 +8,6 @@ abstract class MyMainWidget03 extends StatefulWidget {
 
   /// main widget title
   final String title;
-
 }
 
 /// My stateful state base
@@ -27,8 +26,7 @@ class MyWidgetStateBase03 extends State<MyMainWidget03> {
         child: Column(
           children: <Widget>[
             Expanded(
-              child:
-              UI.textArea(text, width * paramWidth, height * paramHeight),
+              child: UI.textArea(text, width * paramWidth, height * paramHeight),
             ),
             controlsHorizontal(context),
           ],
@@ -88,12 +86,10 @@ class MyWidgetStateBase03 extends State<MyMainWidget03> {
   }
 
   /// Test function
-  void onTest01(){
-  }
+  void onTest01() {}
 
   /// Test function
-  void onTest02(){
-  }
+  void onTest02() {}
 
   /// Control area
   Widget controlsHorizontal(BuildContext context) {
@@ -118,7 +114,7 @@ class MyWidgetStateBase03 extends State<MyMainWidget03> {
 
   /// Control area
   Widget controlsVertical(BuildContext context) {
-    return Column (
+    return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
         ElevatedButton(

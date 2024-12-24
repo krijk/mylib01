@@ -45,7 +45,5 @@ void main() {
     expect(colFromString.r, colBase.r);
     expect(colFromString.g, colBase.g);
     expect(colFromString.b, colBase.b);
-
   });
-
 }

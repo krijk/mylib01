@@ -128,8 +128,7 @@ class Utl {
   }
 
   /// Convert double to string and format the number of digits of decimals
-  static
-  String formatDoubleNum(double number, {int numDecimal = 0}) {
+  static String formatDoubleNum(double number, {int numDecimal = 0}) {
     return number.toStringAsFixed(numDecimal);
   }
 }

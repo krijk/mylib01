@@ -1,4 +1,5 @@
 library;
+
 import 'package:flutter/material.dart';
 
 /// Flutter: how to force an application restart (in production mode)?
@@ -14,7 +15,6 @@ class RestartWidget extends StatefulWidget {
 
   /// Do restart
   static void restartApp(BuildContext context) {
-
     final State<RestartWidget>? state = context.findRootAncestorStateOfType<State<RestartWidget>>();
     if (state is RestartWidgetState) {
       state.restartApp();
