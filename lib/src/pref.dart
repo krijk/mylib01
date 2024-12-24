@@ -90,4 +90,11 @@ class Pref  {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.remove(key);
   }
+
+  /// Reload and fetches the latest values from the host platform.
+  static
+  Future<void> reload() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.reload();
+  }
 }
