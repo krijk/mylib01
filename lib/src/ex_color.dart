@@ -14,4 +14,15 @@ extension ColorExtension on Color {
             '$red$green$blue'
         .toUpperCase();
   }
+
+  /// Invert it
+  Color invert() {
+    final int base = 0xff;
+    return Color.fromARGB(
+      (base * a).toInt(),
+      (base * (1 - r)).toInt(),
+      (base * (1 - g)).toInt(),
+      (base * (1 - b)).toInt(),
+    );
+  }
 }
