@@ -29,16 +29,13 @@ enum kPlatform {
 class Utl {
   /// Get a random int value
   static int randomInt({int min = 0, int max = 99}) {
+    assert(min > max);
     return min + Random().nextInt(max - min);
   }
 
   /// Get a random bool value
   static bool randomBool() {
-    final int val = randomInt();
-    if (val % 2 == 0) {
-      return true;
-    }
-    return false;
+    return Random().nextBool();
   }
 
   /// Get the name of the caller method
