@@ -26,7 +26,7 @@ class MyWidgetStateBase03 extends State<MyMainWidget03> {
         child: Column(
           children: <Widget>[
             Expanded(
-              child: UI.textArea(text, width * paramWidth, height * paramHeight),
+              child: UI.textArea(text, width: width * paramWidth, height: height * paramHeight),
             ),
             controlsHorizontal(context),
           ],
@@ -42,7 +42,7 @@ class MyWidgetStateBase03 extends State<MyMainWidget03> {
     return Row(
       children: <Widget>[
         Expanded(
-          child: UI.textArea(text, height * paramWidth, height * paramHeight),
+          child: UI.textArea(text, width: height * paramWidth, height: height * paramHeight),
         ),
         controlsVertical(context),
       ],
