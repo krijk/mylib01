@@ -3,16 +3,18 @@ import 'package:flutter/material.dart';
 
 /// My utility for user interface
 class UI {
-  /// Text on the scroll view
-  static String text = '';
-
-  /// Text area scroll controller
-  static final ScrollController _textAreaController = ScrollController();
+  /// font size
+  static const double defaultFontSize = 14.0;
+  /// Text area margin
+  static const double defaultMarginValue = 15.0;
+  /// Text area padding
+  static const double defaultPaddingValue = 3.0;
+  /// Text area border width
+  static const double defaultBorderWidth = 2.0;
 
   /// Get the screen size
   static Size screenSize(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
-    return size;
+    return MediaQuery.of(context).size;
   }
 
   /// Get the screen width
@@ -28,22 +30,24 @@ class UI {
   /// Check if the device is in landscape mode
   /// checked by the screen size
   static bool isLandscapeScreen(BuildContext ctx) {
-    final double w = screenWidth(ctx);
-    final double h = screenHeight(ctx);
-    if (w > h) {
-      return true;
-    }
-    return false;
+    final Size size = screenSize(ctx);
+    return size.width > size.height;
   }
 
   /// Create text area
-  static Widget textArea(String text, double? width, double? height, {TextStyle? style}) {
-    UI.text = text;
-
+  static Widget textArea(
+    String text, {
+    double? width,
+    double? height,
+    TextStyle? style,
+    ScrollController? scrollController, // Allow passing a controller
+    EdgeInsetsGeometry? margin,
+    EdgeInsetsGeometry? padding,
+  }) {
     style ??= const TextStyle(
       // color: Colors.black,
       fontWeight: FontWeight.normal,
-      fontSize: 14.0,
+      fontSize: defaultFontSize,
       letterSpacing: 0,
       wordSpacing: 0,
     );
@@ -52,15 +56,15 @@ class UI {
       width: width,
       height: height,
       // Margin of the container
-      margin: const EdgeInsets.all(15.0),
+      margin: margin ?? const EdgeInsets.all(defaultMarginValue),
       // Padding: margin inside of container
-      padding: const EdgeInsets.all(3.0),
+      padding: padding ?? const EdgeInsets.all(defaultPaddingValue),
 
       decoration: BoxDecoration(
         // adding borders around the widget
         border: Border.all(
           color: Colors.grey.withValues(alpha: 0.2),
-          width: 2.0,
+          width: defaultBorderWidth,
         ),
       ),
       // SingleChildScrollView should be
@@ -68,14 +72,17 @@ class UI {
       child: Scrollbar(
         // SingleChildScrollView contains a
         // single child which is scrollable
-        controller: _textAreaController,
+        controller: scrollController,
         child: SingleChildScrollView(
           // for Vertical scrolling
           // scrollDirection: Axis.vertical,
-          controller: _textAreaController,
-          child: Text(
-            UI.text,
-            style: style,
+          controller: scrollController,
+          child: Padding( // Add padding around text for better aesthetics
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              text,
+              style: style,
+            ),
           ),
         ),
       ),
@@ -83,16 +90,22 @@ class UI {
   }
 
   /// Scroll the text area to the bottom
-  static void textAreaScrollDown() {
-    final ScrollController controller = _textAreaController;
-    if (controller.hasClients) {
-      controller.jumpTo(controller.position.maxScrollExtent);
-    }
-  }
+  // static void textAreaScrollDown() {
+  //   final ScrollController controller = _textAreaController;
+  //   if (controller.hasClients) {
+  //     controller.jumpTo(controller.position.maxScrollExtent);
+  //   }
+  // }
 
   /// Get random color
   static Color getRandomColor() {
-    return Color((Random().nextDouble() * 0xFFFFFF).toInt()).withValues(alpha: 1.0);
+    final Random random = Random();
+    return Color.fromRGBO(
+      random.nextInt(256), // Red
+      random.nextInt(256), // Green
+      random.nextInt(256), // Blue
+      1.0, // Opacity
+    );
   }
 
   /// Get current theme data
