@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 /// Restart widget
 class RestartWidget extends StatefulWidget {
   /// Restart widget
-  const RestartWidget({required this.child});
+  const RestartWidget({super.key, required this.child});
 
   /// The widget to restart
   final Widget child;
@@ -16,6 +16,20 @@ class RestartWidget extends StatefulWidget {
   /// Do restart
   static void restartApp(BuildContext context) {
     final State<RestartWidget>? state = context.findRootAncestorStateOfType<State<RestartWidget>>();
+    if(state == null){
+      // It's good practice to provide feedback if the widget isn't found.
+      // Depending on the app, you might throw an error or log a warning.
+      FlutterError.reportError(
+          FlutterErrorDetails(
+            exception: Exception(
+                'RestartWidget.restartApp() called on a context that does not include a RestartWidget ancestor.',),
+            library: 'restart_widget', // your library name
+            context: ErrorDescription('while trying to restart the application'),
+          ),
+      );
+      return;
+    }
+
     if (state is RestartWidgetState) {
       state.restartApp();
     }
