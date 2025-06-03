@@ -6,8 +6,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 class Pref {
   static SharedPreferences? _prefs;
 
-  // For testing purposes
+  /// For testing purposes
   @visibleForTesting
+  // ignore: use_setters_to_change_properties
   static void setMockInstance(SharedPreferences mock) {
     _prefs = mock;
   }
