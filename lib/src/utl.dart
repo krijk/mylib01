@@ -29,7 +29,7 @@ enum kPlatform {
 class Utl {
   /// Get a random int value
   static int randomInt({int min = 0, int max = 99}) {
-    assert(min > max);
+    assert(min < max);
     return min + Random().nextInt(max - min);
   }
 
