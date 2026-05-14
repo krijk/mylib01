@@ -1,7 +1,11 @@
 import 'dart:io';
-import 'dart:math';
+import 'dart:math' as math;
 
 import 'package:flutter/foundation.dart';
+import 'package:intl/intl.dart';
+
+/// Date format YYYY/MM
+final DateFormat dtFormatMonth = DateFormat('yyyy/MM');
 
 /// Platforms
 // ignore: camel_case_types
@@ -30,12 +34,12 @@ class Utl {
   /// Get a random int value
   static int randomInt({int min = 0, int max = 99}) {
     assert(min < max);
-    return min + Random().nextInt(max - min);
+    return min + math.Random().nextInt(max - min);
   }
 
   /// Get a random bool value
   static bool randomBool() {
-    return Random().nextBool();
+    return math.Random().nextBool();
   }
 
   /// Get the name of the caller method
@@ -128,6 +132,34 @@ class Utl {
   static String formatDoubleNum(double number, {int numDecimal = 0}) {
     return number.toStringAsFixed(numDecimal);
   }
+
+  /// Returns the number of days between two dates.
+  static int daysBetween(DateTime from, DateTime to) {
+    return to.difference(from).inDays;
+  }
+
+  /// Convert time string to millisecond
+  /// time format 00:04:21.58X
+  static int getTimeInMilli(String time, {String format = 'HH:mm:ss.SSS'}) {
+    const bool utc = true;
+    final DateTime dt = DateFormat(format).parse(time, utc);
+    final int msec = dt.millisecondsSinceEpoch;
+    return msec;
+  }
+
+  /// Convert degree to radian
+  static double degreeToRadian(double degree) => degree * math.pi / 180;
+
+  /// Convert radian to degree
+  static double radianToDegree(double radian) => radian * 180 / math.pi;
+
+  /// Checks if a folder exists at the given path.
+  static Future<bool> isFolderExists(String path) => Directory(path).exists();
+
+  /// Truncate a string to a specified length or shorter
+  static String truncate(String text, int maxLength) {
+    return (text.length <= maxLength) ? text : text.substring(0, maxLength);
+  }
 }
 
 /// Titled
@@ -144,4 +176,23 @@ mixin Titled {
   String getTitle() {
     return _title;
   }
+}
+
+/// A utility to sequentially calculate a running average.
+class AverageCalculator {
+  int _count = 0;
+  num _sum = 0;
+
+  /// Returns the current average.
+  double get average => _count == 0 ? 0 : _sum / _count;
+
+  /// Adds a value and returns the updated average.
+  double add(num val) {
+    _sum += val;
+    _count++;
+    return average;
+  }
+
+  @override
+  String toString() => average.toString();
 }
