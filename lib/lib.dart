@@ -8,3 +8,4 @@ export './src/pref.dart';
 export './src/restart_app.dart';
 export './src/ui.dart';
 export './src/utl.dart';
+export './src/utl_file.dart';
