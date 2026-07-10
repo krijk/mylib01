@@ -38,7 +38,7 @@ void main() {
       expect(ElecUtl.getCapacitorCode(100e-12), '101'); // 100 pF -> 10 * 10^1
       expect(ElecUtl.getCapacitorCode(1e-6), '105'); // 1 uF = 1,000,000 pF -> 10 * 10^5
       expect(ElecUtl.getCapacitorCode(0.1e-6), '104'); // 0.1 uF = 100,000 pF -> 10 * 10^4
-      expect((47e-12).capacitorCode, '470'); // 47 pF -> 47 * 10^0
+      expect(47e-12.capacitorCode, '470'); // 47 pF -> 47 * 10^0
     });
   });
 
