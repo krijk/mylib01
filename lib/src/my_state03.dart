@@ -4,7 +4,7 @@ import 'ui.dart';
 /// My main widget
 abstract class MyMainWidget03 extends StatefulWidget {
   /// My main widget
-  const MyMainWidget03(this.title);
+  const MyMainWidget03(this.title, {super.key});
 
   /// main widget title
   final String title;
