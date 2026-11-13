@@ -1,6 +1,6 @@
 library;
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 /// Flutter: how to force an application restart (in production mode)?
 /// https://stackoverflow.com/questions/50115311/flutter-how-to-force-an-application-restart-in-production-mode
